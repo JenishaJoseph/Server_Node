@@ -29,11 +29,8 @@ app.use(bodyParser.json());
 // Serve Uploaded Images Publicly
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
-//MongoDB connection URI
-const uri = 'mongodb+srv://jenishamdb:JemongoDB@jenisha.adka0.mongodb.net/?retryWrites=true&w=majority&appName=Jenisha'
-
 //Connect to mongodb using Mongoose
-mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('Successfully connected to Mongodb using Mongoose.!'))
     .catch((err) => console.log('Connection error:', err));
 
